@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Game.Penguins.Core.Interfaces.Game.GameBoard
 {
     public interface ICell

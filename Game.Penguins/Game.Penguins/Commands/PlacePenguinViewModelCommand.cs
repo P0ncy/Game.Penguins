@@ -21,7 +21,6 @@ namespace Game.Penguins.Commands
         public override bool CanExecute(object parameter)
         {
             return true;
-            return currentGameViewModel.SelectedCell != null;
         }
     }
 }
