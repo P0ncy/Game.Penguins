@@ -1,4 +1,4 @@
-﻿namespace Game.Penguins.Core.Interfaces.Game.Players
+﻿    namespace Game.Penguins.Core.Interfaces.Game.Players
 {
     public enum PlayerColor
     {
