@@ -76,6 +76,7 @@
     <Compile Include="Framework\Command.cs" />
     <Compile Include="Framework\ViewModel.cs" />
     <Compile Include="Framework\ViewModelCommand.cs" />
+    <Compile Include="IA.easy\IAEasy.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationPlayer.cs" />
