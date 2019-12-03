@@ -68,7 +68,7 @@ namespace Game.Penguins.AI.Medium.Code
                 return new Coordinates()
                 {
                     X = choscase.XPos,
-                    Y = choscase.YPos
+                    Y = choscase.YPos;
                 };
             }
             else
