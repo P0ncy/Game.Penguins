@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using Game.Penguins.Core.Interfaces.Game.GameBoard;
 using Game.Penguins.Core.Interfaces.Game.Actions;
 using Game.Penguins.Core.Code.Interface;
@@ -9,32 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.Penguins.AI.Easy.Code
+namespace Game.Penguins.AI.Medium.Code
 {
-    public class AiEasy : IAi, ILog
+    public class IAMedium : IAi, ILog
     {
-        private readonly ILog Log = LogManager.GetLogger<AiEasy>();
+        #region Definitions
 
-        //coordinates for placement in the first turn
+        private readonly ILog Log = LogMag.GetLogger<IAMedium>();
+
         public int PlacementPenguinX { get; set; }
-
         public int PlacementPenguinY { get; set; }
 
-        //board
         public IBoard MainBoard { get; }
-
-        //penguins
         public IPenguin Penguin { get; }
+        public static object LogMag { get; private set; }
 
         private readonly int[] _tabDirection = new int[6];
+        private readonly MoVerif _movMag;
 
-        private readonly MoveVerif _movMag;
-
-        public AiEasy(IBoard plateauParam)
+        public IAMedium(IBoard plateauParam)
         {
             MainBoard = plateauParam;
-            _movMag = new MoveVerif(MainBoard);
+            _movMag = new MoVerif(MainBoard);
         }
+
+        #endregion Definitions
+
 
         public Coordinates PlacementPenguin()
         {
@@ -58,28 +56,20 @@ namespace Game.Penguins.AI.Easy.Code
                 }
             }
             Log.Error("no cell found");
-
             return null;
         }
 
-
         public Coordinates FinalDestcase(int posX, int posY)
         {
-            var poscase = _movMang.WpossibleMove((Case)MainBoard.Board[posX, posY]);
+            var poscase = _movMang.Wpossiblemove((Cell)MainBoard.Board[posX, posY]);
             if (poscase.Any())
             {
-                while (true)
+                var choscase = (Cell)poscase[new Random().Next(poscase.Count)];
+                return new Coordinates()
                 {
-                    Case choscase = (Case)poscase[new Random().Next(poscase.Count)];
-                    if (choscase.CaseType == caseType.Fish)
-                    {
-                        return new Coordinates()
-                        {
-                            X = choscase.XPos,
-                            Y = choscase.YPos
-                        };
-                    }
-                }
+                    X = choscase.XPos,
+                    Y = choscase.YPos
+                };
             }
             else
             {
