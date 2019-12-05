@@ -18,6 +18,6 @@ namespace Game.Penguins.Core.Code.Interface
             _movementManager = new MovementVerificationHelper(MainBoard);
         }*/
 
-  
+
     }
 }

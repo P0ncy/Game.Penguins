@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using Game.Penguins.Core.Interfaces.Game.GameBoard;
 using Game.Penguins.Core.Interfaces.Game.Actions;
 using Game.Penguins.Core.Code.Interface;
@@ -60,9 +58,6 @@ namespace Game.Penguins.AI.Easy.Code
                     };
                 }
             }
-            Log.Error("no cell found");
-
-            return null;
         }
 
 
@@ -90,8 +85,20 @@ namespace Game.Penguins.AI.Easy.Code
             }
         }
     }
+
+    public class MoveVerif
+    {
+        private IBoard mainBoard;
+
+        public MoveVerif(IBoard mainBoard)
+        {
+            this.mainBoard = mainBoard;
+        }
+    }
+
     public class Coordinates
     {
-
+        public int X { get; internal set; }
+        public int Y { get; internal set; }
     }
 }

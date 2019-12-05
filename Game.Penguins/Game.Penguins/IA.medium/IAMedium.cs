@@ -32,6 +32,10 @@ namespace Game.Penguins.AI.Medium.Code
             _movMag = new MoVerif(MainBoard);
         }
 
+        public IAMedium()
+        {
+        }
+
         #endregion Definitions
 
 
@@ -56,8 +60,6 @@ namespace Game.Penguins.AI.Medium.Code
                     };
                 }
             }
-            Log.Error("no cell found");
-            return null;
         }
 
         public Coordinates FinalDestcase(int posX, int posY)
@@ -78,8 +80,19 @@ namespace Game.Penguins.AI.Medium.Code
             }
         }
 
+    public class MoVerif
+    {
+        private IBoard mainBoard;
+
+        public MoVerif(IBoard mainBoard)
+        {
+            this.mainBoard = mainBoard;
+        }
+    }
+
     public class Coordinates
     {
-
+        public int X { get; internal set; }
+        public int Y { get; internal set; }
     }
 }
