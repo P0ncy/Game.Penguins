@@ -8,12 +8,14 @@ using Game.Penguins.Core.Code.Interface;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
+using Game.Penguins.AI.Medium.Code;
 
 namespace Game.Penguins.AI.Easy.Code
 {
-    public class AiEasy : IAi, ILog
+    public class AiEasy : IAi//, ILog
     {
-        private readonly ILog Log = LogManager.GetLogger<AiEasy>();
+        private readonly ILog Log = LogManager.GetLogger(typeof(AiEasy));
 
         //coordinates for placement in the first turn
         public int PlacementPenguinX { get; set; }
@@ -35,6 +37,7 @@ namespace Game.Penguins.AI.Easy.Code
             MainBoard = plateauParam;
             _movMag = new MoveVerif(MainBoard);
         }
+
 
         public Coordinates PlacementPenguin()
         {
@@ -86,5 +89,9 @@ namespace Game.Penguins.AI.Easy.Code
                 return null;
             }
         }
+    }
+    public class Coordinates
+    {
+
     }
 }

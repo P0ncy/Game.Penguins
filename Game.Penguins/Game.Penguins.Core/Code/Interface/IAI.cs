@@ -17,5 +17,7 @@ namespace Game.Penguins.Core.Code.Interface
             MainBoard = plateauParam;
             _movementManager = new MovementVerificationHelper(MainBoard);
         }*/
+
+  
     }
 }

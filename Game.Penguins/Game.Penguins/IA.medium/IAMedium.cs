@@ -6,14 +6,15 @@ using Game.Penguins.Core.Code.Interface;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 
 namespace Game.Penguins.AI.Medium.Code
 {
-    public class IAMedium : IAi, ILog
+    public class IAMedium : IAi
     {
         #region Definitions
 
-        private readonly ILog Log = LogMag.GetLogger<IAMedium>();
+        private readonly ILog Log = LogManager.GetLogger(typeof(IAMedium));
 
         public int PlacementPenguinX { get; set; }
         public int PlacementPenguinY { get; set; }
@@ -76,5 +77,9 @@ namespace Game.Penguins.AI.Medium.Code
                 return null;
             }
         }
+
+    public class Coordinates
+    {
+
     }
 }
