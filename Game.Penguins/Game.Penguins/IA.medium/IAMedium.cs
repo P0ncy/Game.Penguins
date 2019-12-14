@@ -29,11 +29,12 @@ namespace Game.Penguins.AI.Medium.Code
         public IAMedium(IBoard plateauParam)
         {
             MainBoard = plateauParam;
-            _movMag = new MoVerif(MainBoard);
+            _movementManager = new MoVerif(MainBoard);
         }
 
         public IAMedium()
         {
+            
         }
 
         #endregion Definitions
@@ -62,16 +63,16 @@ namespace Game.Penguins.AI.Medium.Code
             }
         }
 
-        public Coordinates FinalDestcase(int posX, int posY)
+        public Coordinates FinalDestCell(int posX, int posY)
         {
-            var poscase = _movMang.Wpossiblemove((Cell)MainBoard.Board[posX, posY]);
-            if (poscase.Any())
+            var posCells = _movementManager.Wpossiblemove((Cell)MainBoard.Board[posX, posY]);
+            if (posCells.Any())
             {
-                var choscase = (Cell)poscase[new Random().Next(poscase.Count)];
+                var chosCell = (Cell)posCells[new Random().Next(posCells.Count)];
                 return new Coordinates()
                 {
-                    X = choscase.XPos,
-                    Y = choscase.YPos;
+                    X = chosCell.XPos,
+                    Y = chosCell.YPos;
                 };
             }
             else

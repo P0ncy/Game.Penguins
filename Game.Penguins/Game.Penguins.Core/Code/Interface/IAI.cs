@@ -12,6 +12,8 @@ namespace Game.Penguins.Core.Code.Interface
         int PlacementPenguinY { get; set; }
         IBoard MainBoard { get; }
 
+        
+
         /*public IAEasy(IBoard plateauParam)
         {
             MainBoard = plateauParam;

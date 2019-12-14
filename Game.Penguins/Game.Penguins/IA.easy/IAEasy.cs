@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using Game.Penguins.AI.Medium.Code;
+using Game.Penguins.Core.Code.Gestion_Plateau;
+
+
 
 namespace Game.Penguins.AI.Easy.Code
 {
-    public class AiEasy : IAi//, ILog
+    public class AiEasy : IAi//,ICell, ILog
     {
         private readonly ILog Log = LogManager.GetLogger(typeof(AiEasy));
 
@@ -23,17 +26,19 @@ namespace Game.Penguins.AI.Easy.Code
         //board
         public IBoard MainBoard { get; }
 
+        private MoveVerif _movementManager;
+
         //penguins
         public IPenguin Penguin { get; }
 
         private readonly int[] _tabDirection = new int[6];
 
-        private readonly MoveVerif _movMag;
+        private readonly MoveVerif _movementManger;
 
         public AiEasy(IBoard plateauParam)
         {
             MainBoard = plateauParam;
-            _movMag = new MoveVerif(MainBoard);
+            _movementManager = new MoveVerif(MainBoard);
         }
 
 
@@ -63,18 +68,18 @@ namespace Game.Penguins.AI.Easy.Code
 
         public Coordinates FinalDestcase(int posX, int posY)
         {
-            var poscase = _movMang.WpossibleMove((Case)MainBoard.Board[posX, posY]);
-            if (poscase.Any())
+            var posCells = _movementManager.WpossibleMove((Cell)MainBoard.Board[posX, posY]);
+            if (posCells.Any())
             {
                 while (true)
                 {
-                    Case choscase = (Case)poscase[new Random().Next(poscase.Count)];
-                    if (choscase.CaseType == caseType.Fish)
+                    Cell chosenCell = (Cell)posCells[new Random().Next(posCells.Count)];
+                    if (chosenCell.CellType == CellType.Fish)
                     {
                         return new Coordinates()
                         {
-                            X = choscase.XPos,
-                            Y = choscase.YPos
+                            X = chosenCell.XPos,
+                            Y = chosenCell.YPos
                         };
                     }
                 }
@@ -93,6 +98,11 @@ namespace Game.Penguins.AI.Easy.Code
         public MoveVerif(IBoard mainBoard)
         {
             this.mainBoard = mainBoard;
+        }
+
+        internal object WpossibleMove(Cell cell)
+        {
+            throw new NotImplementedException();
         }
     }
 
